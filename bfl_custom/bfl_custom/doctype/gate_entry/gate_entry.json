@@ -1,0 +1,181 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-01-24 22:12:15.787257",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tvvv",
+  "naming_series",
+  "amended_from",
+  "party_type",
+  "supplier",
+  "entry_type",
+  "type",
+  "reference",
+  "dispatched_by",
+  "column_break_hslt",
+  "purpose",
+  "gate_out_time",
+  "posting_date",
+  "created_by",
+  "approved_by",
+  "section_break_jezx",
+  "item",
+  "section_break_rbpe",
+  "table_usbr",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tvvv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "NAMING SERIES"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "GATE ENTRY",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "link_filters": "[[\"DocType\",\"name\",\"in\",[\"Supplier\",\"Customer\"]]]",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Dynamic Link",
+   "label": "Party",
+   "options": "party_type"
+  },
+  {
+   "fieldname": "entry_type",
+   "fieldtype": "Select",
+   "label": "ENTRY TYPE",
+   "options": "IN\nOUT"
+  },
+  {
+   "depends_on": "eval:doc.entry_type == \"OUT\"",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "TYPE",
+   "options": "\nOUT-RETURNABLE\nOUT-NON RETURNABLE\nTRANSFER"
+  },
+  {
+   "depends_on": "type",
+   "fieldname": "reference",
+   "fieldtype": "Link",
+   "label": "REFERENCE ",
+   "options": "GATE ENTRY"
+  },
+  {
+   "fieldname": "dispatched_by",
+   "fieldtype": "Select",
+   "label": "DISPATCHED BY",
+   "options": "Truck\nBy Hand\nTempo\nCourier"
+  },
+  {
+   "fieldname": "column_break_hslt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "PURPOSE",
+   "options": "MATERIAL REPAIRING\nLOAN GIVEN\nTRANSFER TO SOLIS\nSPARE PURCHASE\nRM PURCHASE"
+  },
+  {
+   "fieldname": "gate_out_time",
+   "fieldtype": "Time",
+   "label": "Gate Out Time"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "POSTING DATE"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "CREATED BY",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "APPROVED BY",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_jezx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Table",
+   "label": "ITEM",
+   "options": "GATE ENTRY ITEM"
+  },
+  {
+   "fieldname": "section_break_rbpe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_usbr",
+   "fieldtype": "Table",
+   "options": "GATE ENTRY VEHICLE"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "GATE ENTRY",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-24 22:12:15.787257",
+ "modified_by": "Administrator",
+ "module": "Bfl Custom",
+ "name": "GATE ENTRY",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
