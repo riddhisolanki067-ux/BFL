@@ -25,7 +25,8 @@ def make_purchase_invoice(gate_entry):
     pi.due_date = frappe.utils.today()
     pi.set_posting_time = 1
     pi.update_stock = 1
-    pi.custom_gate_entry = gate_entry_doc.name  # optional link field
+    pi.custom_gate_entry = gate_entry_doc.name
+    # optional link field
 
     for row in gate_entry_doc.item:
         pi.append("items", {
@@ -36,6 +37,11 @@ def make_purchase_invoice(gate_entry):
         })
 
     pi.insert(ignore_permissions=True)
+    gate_entry_doc.purchase_invoice = pi.name
+    gate_entry_doc.save(ignore_permissions=True)
+
     frappe.db.commit()
+    
+
 
     return pi.name
