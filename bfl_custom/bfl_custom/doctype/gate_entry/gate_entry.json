@@ -22,6 +22,7 @@
   "created_by",
   "approved_by",
   "docchallan_number",
+  "had_attachments",
   "section_break_jezx",
   "item",
   "section_break_rbpe",
@@ -157,13 +158,19 @@
    "fieldname": "docchallan_number",
    "fieldtype": "Data",
    "label": "Doc/Challan Number "
+  },
+  {
+   "default": "0",
+   "fieldname": "had_attachments",
+   "fieldtype": "Check",
+   "label": "Has attachments"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-05 13:24:32.511174",
+ "modified": "2026-02-05 14:56:22.705752",
  "modified_by": "Administrator",
  "module": "Bfl Custom",
  "name": "GATE ENTRY",

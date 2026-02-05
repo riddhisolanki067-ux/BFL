@@ -1,7 +1,7 @@
 # Copyright (c) 2026, r and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
 
 
@@ -45,3 +45,21 @@ def make_purchase_invoice(gate_entry):
 
 
     return pi.name
+
+def update_attachment_flag(doc, method):
+    print("method is calling------------------")
+    attachments = frappe.get_all(
+        "File",
+        filters={
+            "attached_to_doctype": "GATE ENTRY",
+            "attached_to_name": doc.name
+        },
+        limit=1
+    )
+    print(attachments)
+    frappe.db.set_value(
+        "GATE ENTRY",
+        doc.name,
+        "had_attachments",
+        1 if attachments else 0
+    )

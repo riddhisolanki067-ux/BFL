@@ -137,13 +137,12 @@ doctype_js = {"Purchase Invoice" : "public/js/purchase_invoice.js"}
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"GATE ENTRY": {
+		"after_insert": "bfl_custom.bfl_custom.doctype.gate_entry.gate_entry.update_attachment_flag",
+        "on_update": "bfl_custom.bfl_custom.doctype.gate_entry.gate_entry.update_attachment_flag"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
