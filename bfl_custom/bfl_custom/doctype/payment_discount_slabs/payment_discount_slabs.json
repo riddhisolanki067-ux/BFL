@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-15 16:09:27.535788",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "from_days",
+  "to_days",
+  "discount"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_days",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From Days"
+  },
+  {
+   "fieldname": "to_days",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "To Days"
+  },
+  {
+   "fieldname": "discount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Discount"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-15 16:11:47.277257",
+ "modified_by": "Administrator",
+ "module": "Bfl Custom",
+ "name": "Payment Discount Slabs",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
