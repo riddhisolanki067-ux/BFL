@@ -4,7 +4,7 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
 		title: 'None',
 		single_column: true
 	});
-	
+
 	let account = page.add_field({
         label: 'Account',
         fieldtype: 'Link',
@@ -27,7 +27,7 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
     function load_data() {
 
         frappe.call({
-            method: 'your_app.your_app.page.latest_journal_entry.latest_journal_entry.get_latest_journal_entries',
+            method: 'bfl_custom.bfl_custom.page.latest_journal_entry.latest_journal_entry.get_latest_journal_entries',
             args: {
                 account: account.get_value(),
                 from_date: from_date.get_value()
