@@ -1,7 +1,7 @@
 frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
-		title: 'None',
+		title: 'Latest Journal Entry',
 		single_column: true
 	});
 
@@ -10,27 +10,22 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
         fieldtype: 'Link',
         fieldname: 'account',
         options: 'Account',
-        reqd: 1
+        reqd: 1,
+        change() {
+            load_data();
+        }
     });
-
-    let from_date = page.add_field({
-        label: 'From Date',
-        fieldtype: 'Date',
-        fieldname: 'from_date',
-        reqd: 1
-    });
-
-    page.add_inner_button('Load', () => load_data());
 
     let $table = $('<div class="mt-4"></div>').appendTo(page.body);
 
     function load_data() {
 
+        if (!account.get_value()) return;
+
         frappe.call({
             method: 'bfl_custom.bfl_custom.page.latest_journal_entry.latest_journal_entry.get_latest_journal_entries',
             args: {
-                account: account.get_value(),
-                from_date: from_date.get_value()
+                account: account.get_value()
             },
             callback: function(r) {
 
@@ -42,8 +37,6 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
     }
 
     function render_table(res) {
-
-        let data = res.rows;
 
         let html = `
             <table class="table table-bordered">
@@ -64,7 +57,7 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
                 <tbody>
         `;
 
-        data.forEach(row => {
+        res.rows.forEach(row => {
 
             html += `
                 <tr>
@@ -82,7 +75,6 @@ frappe.pages['latest_journal_entry'].on_page_load = function(wrapper) {
             `;
         });
 
-        // ⭐ TOTAL ROW
         html += `
             <tr style="font-weight:bold; background:#f5f5f5;">
                 <td colspan="7" style="text-align:right;">TOTAL</td>
